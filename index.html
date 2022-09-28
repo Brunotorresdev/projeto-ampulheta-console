@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafio Mobix</title>
+  </head>
+  <body>
+    <button
+      style="
+        color: rgb(41, 39, 39);
+        font-weight: 400;
+        border: none;
+        cursor: pointer;
+        width: 200px;
+        height: 50px;
+        margin-left: 300px;
+        margin-top: 300px;
+        font-size: 24px;
+        background-color: rgb(56, 245, 182);
+      "
+      onclick="desafio()"
+    >
+      Iniciar Teste
+    </button>
+
+    <div
+      style="
+        color: rgb(41, 39, 39);
+        font-weight: 400;
+        border: none;
+        cursor: pointer;
+        margin-left: 250px;
+        margin-top: 40px;
+        font-size: 24px;
+      "
+    >
+      Aperte F12 Para ver o console
+    </div>
+
+    <script>
+      const desafio = () => {
+        let input = prompt("insira um inputero igual ou maior que 20");
+
+        if (input >= 20) {
+          // criação das variáveis
+          let metade = Number(input / 2);
+          let intervalo;
+          let aux = 1;
+          let cerquilha = "#";
+          let espaco = " ";
+
+          // atribuição da variável que vai dar o interválo da exibição dos caracteres
+          intervalo = input - 2;
+
+          console.log(`${cerquilha.repeat(input)}`);
+
+          // Loop da parte de cima da ampulheta
+          for (i = 1; i < metade; i++) {
+            console.log(
+              `#${espaco.repeat(i)}#${espaco.repeat(
+                intervalo - 4
+              )}#${espaco.repeat(i)}#`
+            );
+            intervalo -= 2;
+            if (intervalo <= 3) {
+              intervalo += 2;
+              i = metade;
+            }
+          }
+          intervalo = input - 2;
+
+          // Loop da parte de baixo da ampulheta - processo inverso
+          for (i = metade - 1; i > 1; i--) {
+            //verifica se o index é par
+            if (input % 2 == 0) {
+              console.log(
+                `#${espaco.repeat(i - 1)}${cerquilha.repeat(
+                  aux + 1
+                )}${espaco.repeat(i - 1)}#`
+              );
+            } else {
+              console.log(
+                `#${espaco.repeat(i)}${cerquilha.repeat(aux)}${espaco.repeat(
+                  i
+                )}#`
+              );
+            }
+            aux += 2;
+          }
+          console.log(`${cerquilha.repeat(input)}`);
+        } else {
+          window.alert("Digite um número válido");
+        }
+      };
+    </script>
+  </body>
+</html>
